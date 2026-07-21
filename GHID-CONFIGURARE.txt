@@ -1,0 +1,82 @@
+SITE NUNTĂ + RSVP ONLINE + ADMIN SECURIZAT
+==========================================
+
+Site public:
+https://spitaiulian.github.io/nunta2026/
+
+Panou administrator:
+https://spitaiulian.github.io/nunta2026/admin.html
+
+CE ESTE DEJA FĂCUT
+------------------
+- Formularul RSVP salvează răspunsurile într-o bază de date Supabase.
+- Panoul admin folosește autentificare reală prin e-mail și parolă.
+- Numai e-mailul de administrator configurat poate citi, modifica sau șterge răspunsurile.
+- Panoul afișează confirmări, refuzuri, familii în așteptare, adulți și copii.
+- Poți schimba statusul, salva notițe private, șterge și exporta CSV pentru Excel.
+- Datele nu mai depind de browserul în care a fost completat formularul.
+
+PASUL 1 — CREEAZĂ PROIECTUL SUPABASE
+--------------------------------------
+1. Intră pe https://supabase.com și creează un cont gratuit.
+2. Apasă New project.
+3. Alege un nume, de exemplu: nunta-iulian-maria.
+4. Salvează parola bazei de date într-un loc sigur.
+5. Așteaptă finalizarea proiectului.
+
+PASUL 2 — CREEAZĂ TABELUL ȘI REGULILE DE SECURITATE
+----------------------------------------------------
+1. În proiectul Supabase deschide SQL Editor.
+2. Apasă New query.
+3. Deschide fișierul setup-supabase.sql din acest pachet.
+4. Copiază tot conținutul și apasă Run.
+5. Trebuie să apară mesajul Success.
+
+PASUL 3 — CREEAZĂ CONTUL ADMIN
+-------------------------------
+1. În Supabase deschide Authentication → Users.
+2. Apasă Add user → Create new user.
+3. E-mail: spita_iulian@yahoo.com
+4. Alege o parolă de minimum 6 caractere. Exemplu: 300600
+   (Nu folosi doar 3006; autentificarea reală cere o parolă mai lungă.)
+5. Bifează Auto Confirm User, apoi Create user.
+
+PASUL 4 — COPIAZĂ DATELE PROIECTULUI
+-------------------------------------
+1. În Supabase deschide Project Settings → API.
+2. Copiază Project URL.
+3. Copiază Publishable key. Dacă proiectul afișează vechea denumire, folosește anon/public key.
+4. Deschide fișierul supabase-config.js.
+5. Înlocuiește:
+   INLOCUIESTE_CU_PROJECT_URL
+   INLOCUIESTE_CU_PUBLISHABLE_KEY
+6. Nu folosi și nu publica niciodată cheia service_role/secret.
+
+PASUL 5 — ÎNCARCĂ SITE-UL PE GITHUB
+------------------------------------
+1. Deschide https://github.com/spitaiulian/nunta2026
+2. Add file → Upload files.
+3. Încarcă TOATE fișierele și folderul assets din acest pachet.
+   Fișierele trebuie să fie direct în rădăcina repository-ului, nu într-un folder suplimentar.
+4. Commit changes.
+5. Settings → Pages:
+   Source: Deploy from a branch
+   Branch: main
+   Folder: /(root)
+   Save.
+6. Așteaptă câteva minute.
+
+TESTARE
+-------
+1. Deschide site-ul public într-o fereastră incognito.
+2. Trimite o confirmare de test.
+3. Deschide /admin.html și conectează-te cu parola creată în Supabase.
+4. Verifică răspunsul și exportul CSV.
+5. Șterge confirmarea de test.
+
+SECURITATE
+----------
+- Publishable/anon key este destinată utilizării în browser.
+- Protecția reală este realizată de Row Level Security (RLS).
+- Cheia service_role/secret nu trebuie pusă niciodată în fișierele site-ului.
+- Parola admin nu este salvată în cod.
