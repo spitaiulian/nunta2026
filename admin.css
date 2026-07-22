@@ -5,3 +5,9 @@ td small{display:block;margin-top:5px;opacity:.55;font-size:10px}
 td a{color:inherit;text-decoration:none}
 .status-select{min-width:130px;padding:8px;border:1px solid rgba(203,168,91,.35);background:#0d2237;color:#f4ead2;border-radius:6px}
 button:disabled{opacity:.6;cursor:wait}
+
+.login-label{display:block;text-align:left;font-size:11px;color:var(--navy);margin-top:14px}
+.login-label input{margin:7px 0 0}
+.login-help{margin:18px 0 0!important;padding:12px;background:rgba(212,154,58,.1);line-height:1.55}
+#signedInAs{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.actions{flex-wrap:wrap}

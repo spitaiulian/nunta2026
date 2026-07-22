@@ -1,0 +1,27 @@
+ACTUALIZARE PANOU ADMIN
+
+1. Deschide repository-ul:
+   https://github.com/spitaiulian/nunta2026
+
+2. Add file → Upload files.
+
+3. Încarcă și înlocuiește aceste trei fișiere:
+   - admin.html
+   - admin.js
+   - admin.css
+
+4. Apasă Commit changes și așteaptă 1-3 minute.
+
+5. Intră la:
+   https://spitaiulian.github.io/nunta2026/admin.html
+
+6. E-mailul este completat automat:
+   spita_iulian@yahoo.com
+
+7. Introdu parola stabilită pentru acest utilizator în:
+   Supabase → Authentication → Users.
+
+IMPORTANT:
+- Parola NU este 3006 decât dacă ai stabilit-o tu așa în Supabase.
+- Dacă nu îți amintești parola, în Supabase deschide Authentication → Users,
+  selectează utilizatorul și folosește opțiunea de schimbare/resetare a parolei.

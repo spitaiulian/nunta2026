@@ -1,1 +1,94 @@
-<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Administrare — I & M</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="admin.css"></head><body><section class="login" id="login"><div class="login-box"><div class="logo">I <span>&</span> M<small>07.11.2026</small></div><h1>Panou privat</h1><p>Introduceți parola contului de administrator pentru a vedea confirmările online.</p><form id="loginForm"><input id="password" type="password" autocomplete="current-password" placeholder="Parola de administrator" required><button>Intră în panou</button><p class="error" id="error"></p></form><a href="index.html">← Înapoi la site</a></div></section><main id="dashboard" hidden><header><div><p>Administrare eveniment</p><h1>Lista invitaților</h1></div><div class="actions"><button id="exportBtn">Export CSV pentru Excel</button><button id="logoutBtn" class="ghost">Ieșire</button></div></header><section class="stats"><article><span>Confirmări</span><strong id="confirmed">0</strong></article><article><span>Refuzuri</span><strong id="declined">0</strong></article><article><span>În așteptare</span><strong id="pending">0</strong></article><article><span>Adulți</span><strong id="adults">0</strong></article><article><span>Copii</span><strong id="children">0</strong></article></section><section class="panel"><div class="toolbar"><input id="search" placeholder="Caută familie sau telefon..."><select id="filter"><option value="all">Toate răspunsurile</option><option value="Confirmat">Confirmate</option><option value="Refuzat">Refuzate</option></select><button id="addPending">Adaugă familie în așteptare</button></div><div class="table-wrap"><table><thead><tr><th>Familie</th><th>Status</th><th>Adulți</th><th>Copii</th><th>Telefon</th><th>Notițe cazare</th><th>Acțiuni</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">Nu există răspunsuri în baza de date.</div></div></section><p class="warning">Răspunsurile sunt salvate online și pot fi văzute numai de contul de administrator configurat în Supabase.</p></main><script type="module" src="admin.js"></script></body></html>
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Administrare — I & M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <section class="login" id="login">
+    <div class="login-box">
+      <div class="logo">I <span>&</span> M<small>07.11.2026</small></div>
+      <h1>Panou privat</h1>
+      <p>Autentificare securizată prin contul de administrator Supabase.</p>
+
+      <form id="loginForm">
+        <label class="login-label">
+          E-mail administrator
+          <input id="email" type="email" autocomplete="username" required>
+        </label>
+        <label class="login-label">
+          Parolă
+          <input id="password" type="password" autocomplete="current-password" placeholder="Parola creată în Supabase" required>
+        </label>
+        <button type="submit">Intră în panou</button>
+        <p class="error" id="error" role="alert"></p>
+      </form>
+
+      <p class="login-help">
+        Parola este cea stabilită în <strong>Supabase → Authentication → Users</strong>,
+        nu codul vechi 3006.
+      </p>
+      <a href="index.html">← Înapoi la site</a>
+    </div>
+  </section>
+
+  <main id="dashboard" hidden>
+    <header>
+      <div>
+        <p>Administrare eveniment</p>
+        <h1>Lista invitaților</h1>
+        <small id="signedInAs"></small>
+      </div>
+      <div class="actions">
+        <button id="refreshBtn">Actualizează</button>
+        <button id="exportBtn">Export Excel</button>
+        <button id="logoutBtn" class="ghost">Ieșire</button>
+      </div>
+    </header>
+
+    <section class="stats">
+      <article><span>Confirmări</span><strong id="confirmed">0</strong></article>
+      <article><span>Refuzuri</span><strong id="declined">0</strong></article>
+      <article><span>În așteptare</span><strong id="pending">0</strong></article>
+      <article><span>Adulți</span><strong id="adults">0</strong></article>
+      <article><span>Copii</span><strong id="children">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <input id="search" placeholder="Caută familie sau telefon...">
+        <select id="filter">
+          <option value="all">Toate răspunsurile</option>
+          <option value="Confirmat">Confirmate</option>
+          <option value="Refuzat">Refuzate</option>
+          <option value="În așteptare">În așteptare</option>
+        </select>
+        <button id="addPending">Adaugă familie în așteptare</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Familie</th><th>Status</th><th>Adulți</th><th>Copii</th>
+              <th>Telefon</th><th>Notițe private</th><th>Acțiuni</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty" id="empty">Nu există răspunsuri în baza de date.</div>
+      </div>
+    </section>
+
+    <p class="warning">Răspunsurile sunt salvate online și sunt vizibile numai contului de administrator autorizat.</p>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
